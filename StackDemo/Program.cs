@@ -7,7 +7,23 @@ namespace StackDemo
     {
         static void Main(string[] args)
         {
-            TestLinkedList();
+            int count = 0;
+            int pos = -1;
+            while (pos == -1)
+            {
+                count++;
+                int[] dave = DataHelper.RandomList(10);
+                DataHelper.Show(dave);
+
+                pos = Searching.Linear(dave, 56);
+                if (pos == -1)
+                    Console.WriteLine("not found");
+                else
+                    Console.WriteLine("found @" + pos + " took " + count);
+            }
+            
+            int a = 5;
+            //TestLinkedList();
 
             //Console.WriteLine("Hello World!");
             //Stack dave = new Stack();
