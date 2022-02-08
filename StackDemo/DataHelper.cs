@@ -11,6 +11,19 @@ namespace StackDemo
     {
         static Random r = new Random();
         static bool[] picked;
+
+        //public static int[] RandomOrderedList(int size)
+        //{
+        //    int[] list = new int[size];
+        //    int num = 0;
+        //    for (int p = 0; p < list.Length; p++)
+        //    {
+        //        num = r.Next(num + 1, num + 10);
+        //        list[p] = num;
+        //    }
+        //    return list;
+        //}
+
         /// <summary>
         /// Generates a non repeating list of random values
         /// </summary>

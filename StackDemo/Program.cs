@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace StackDemo
 {
@@ -7,31 +8,39 @@ namespace StackDemo
     {
         static void Main(string[] args)
         {
+            Stopwatch stopWatch = new Stopwatch();
+            Console.WriteLine("Generating data");
+            stopWatch.Start();
+            int[] dave = DataHelper.RandomList(100000000);
+            stopWatch.Stop();
+            Timing.ShowStopWatch(stopWatch);
+
+            stopWatch.Restart();
+            Console.WriteLine("Starting search");
+            Searching.Linear(dave, 0);
+            stopWatch.Stop();
+            Timing.ShowStopWatch(stopWatch);
+
+        }
+
+
+
+        private static void TestLinearSearch()
+        {
             int count = 0;
             int pos = -1;
             while (pos == -1)
             {
                 count++;
-                int[] dave = DataHelper.RandomList(10);
+                int[] dave = DataHelper.RandomList(1000);
                 DataHelper.Show(dave);
 
-                pos = Searching.Linear(dave, 56);
+                pos = Searching.Linear(dave, 4646456);
                 if (pos == -1)
                     Console.WriteLine("not found");
                 else
                     Console.WriteLine("found @" + pos + " took " + count);
             }
-            
-            int a = 5;
-            //TestLinkedList();
-
-            //Console.WriteLine("Hello World!");
-            //Stack dave = new Stack();
-            
-            //dave.Push(13);
-            //dave.Push(17);
-            //dave.Push(25);
-            //Console.WriteLine(dave);
         }
 
         private static void TestLinkedList()
