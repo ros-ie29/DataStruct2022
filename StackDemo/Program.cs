@@ -8,22 +8,29 @@ namespace StackDemo
     {
         static void Main(string[] args)
         {
+            LinearTimeTest();
+
+        }
+
+        private static void LinearTimeTest()
+        {
             Stopwatch stopWatch = new Stopwatch();
             Console.WriteLine("Generating data");
             stopWatch.Start();
-            int[] dave = DataHelper.RandomList(100000000);
+            int[] dave = DataHelper.RandomList(1000000);
             stopWatch.Stop();
             Timing.ShowStopWatch(stopWatch);
 
             stopWatch.Restart();
             Console.WriteLine("Starting search");
-            Searching.Linear(dave, 0);
+            int loc = Searching.Linear(dave, 7898);
             stopWatch.Stop();
             Timing.ShowStopWatch(stopWatch);
-
+            if (loc != -1)
+                Console.WriteLine("found it @" + loc);
+            else
+                Console.WriteLine("doesn't exist");
         }
-
-
 
         private static void TestLinearSearch()
         {
