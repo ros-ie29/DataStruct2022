@@ -8,16 +8,25 @@ namespace StackDemo
     {
         static void Main(string[] args)
         {
-            //LinearTimeTest();
-            TestBinarySearch();
+            Stopwatch stopWatch = new Stopwatch();
+            Console.WriteLine("Generating data");
+            stopWatch.Start();
+            int[] ol = DataHelper.RandomOrderedList(500000000);
+            stopWatch.Stop();
+            Timing.ShowStopWatch(stopWatch);
+
+            int n = 54101002;
+            LinearTimeTest(ol, n);
+            TestBinarySearch(ol, n);
         }
 
-        private static void TestBinarySearch()
+        private static void TestBinarySearch(int[] list, int item)
         {
-            int[] ol = DataHelper.RandomOrderedList(1000);
             Stopwatch stopWatch = new Stopwatch();
+            Console.WriteLine("Starting binary search");
+
             stopWatch.Start();
-            int loc = Searching.Binary(ol, 506);
+            int loc = Searching.Binary(list, item);
             stopWatch.Stop();
             Timing.ShowStopWatch(stopWatch);
             if (loc != -1)
@@ -26,19 +35,13 @@ namespace StackDemo
                 Console.WriteLine("doesn't exist");
         }
 
-        private static void LinearTimeTest()
+        private static void LinearTimeTest(int[] list, int item)
         {
             Stopwatch stopWatch = new Stopwatch();
-            
-            Console.WriteLine("Generating data");
-            stopWatch.Start();
-            int[] dave = DataHelper.RandomList(1000000);
-            stopWatch.Stop();
-            Timing.ShowStopWatch(stopWatch);
+            Console.WriteLine("Starting search linear");
 
-            stopWatch.Restart();
-            Console.WriteLine("Starting search");
-            int loc = Searching.Linear(dave, 7898);
+            stopWatch.Start();
+            int loc = Searching.Linear(list, item);
             stopWatch.Stop();
             Timing.ShowStopWatch(stopWatch);
             if (loc != -1)

@@ -18,7 +18,7 @@ namespace StackDemo
             int num = 0;
             for (int p = 0; p < list.Length; p++)
             {
-                num = r.Next(num + 1, num + 10);
+                num = r.Next(num + 1, num + 3);
                 list[p] = num;
             }
             return list;
