@@ -8,14 +8,17 @@ namespace StackDemo
     {
         static void Main(string[] args)
         {
+            int size = 500000000;
             Stopwatch stopWatch = new Stopwatch();
-            Console.WriteLine("Generating data");
+
+            Console.WriteLine("Generating " + size + " ordered data items");
             stopWatch.Start();
-            int[] ol = DataHelper.RandomOrderedList(500000000);
+            int[] ol = DataHelper.RandomOrderedList(size);
             stopWatch.Stop();
             Timing.ShowStopWatch(stopWatch);
 
-            int n = 54101002;
+            //pick a value 80% of the way in
+            int n = ol[(int)(size*0.8f)];
             LinearTimeTest(ol, n);
             TestBinarySearch(ol, n);
         }

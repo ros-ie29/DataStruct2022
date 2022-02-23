@@ -31,6 +31,8 @@ namespace StackDemo
         /// <returns>duh</returns>
         public static int[] RandomList(int size)
         {
+            if (size > 10000000) size = 1000000;
+
             int[] list = new int[size];
             ResetPicks(size * 10);
 
