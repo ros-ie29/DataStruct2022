@@ -8,13 +8,28 @@ namespace StackDemo
     {
         static void Main(string[] args)
         {
-            LinearTimeTest();
+            //LinearTimeTest();
+            TestBinarySearch();
+        }
 
+        private static void TestBinarySearch()
+        {
+            int[] ol = DataHelper.RandomOrderedList(1000);
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            int loc = Searching.Binary(ol, 506);
+            stopWatch.Stop();
+            Timing.ShowStopWatch(stopWatch);
+            if (loc != -1)
+                Console.WriteLine("found it @" + loc);
+            else
+                Console.WriteLine("doesn't exist");
         }
 
         private static void LinearTimeTest()
         {
             Stopwatch stopWatch = new Stopwatch();
+            
             Console.WriteLine("Generating data");
             stopWatch.Start();
             int[] dave = DataHelper.RandomList(1000000);
