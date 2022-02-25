@@ -8,6 +8,15 @@ namespace StackDemo
     {
         static void Main(string[] args)
         {
+            int[] blobble = DataHelper.RandomList(10);
+            DataHelper.Show(blobble);
+            MyInsertionSort.InsertionSort(blobble);
+            DataHelper.Show(blobble);
+            //Searches();
+        }
+
+        private static void Searches()
+        {
             int size = 500000000;
             Stopwatch stopWatch = new Stopwatch();
 
@@ -18,7 +27,7 @@ namespace StackDemo
             Timing.ShowStopWatch(stopWatch);
 
             //pick a value 80% of the way in
-            int n = ol[(int)(size*0.8f)];
+            int n = ol[(int)(size * 0.8f)];
             LinearTimeTest(ol, n);
             TestBinarySearch(ol, n);
         }
